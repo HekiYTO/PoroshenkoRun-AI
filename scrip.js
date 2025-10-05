@@ -214,12 +214,12 @@ function draw() {
     }
 
     // Машина: движение и отрисовка
-    carX -= bgSpeed + 4;
+    carX -= bgSpeed + 6;
     if (carX + carWidth < 0) {
         carX = canvas.width + Math.random() * 1500;
     }
     cg.drawImage(carImg, carX, carY, carWidth, carHeight);
-    
+
 let carCollisionPadding = 0.6; // было 0.4, теперь зона коллизии уменьшена сильнее
 let carColX = carX + carWidth * carCollisionPadding / 2;
 let carColY = carY + carHeight * carCollisionPadding / 2;
