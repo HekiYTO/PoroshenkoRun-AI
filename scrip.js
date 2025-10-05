@@ -219,25 +219,25 @@ function draw() {
         carX = canvas.width + Math.random() * 1500;
     }
     cg.drawImage(carImg, carX, carY, carWidth, carHeight);
+    
+let carCollisionPadding = 0.6; // было 0.4, теперь зона коллизии уменьшена сильнее
+let carColX = carX + carWidth * carCollisionPadding / 2;
+let carColY = carY + carHeight * carCollisionPadding / 2;
+let carColW = carWidth * (1 - carCollisionPadding);
+let carColH = carHeight * (1 - carCollisionPadding);
 
-    let carCollisionPadding = 0.4;
-    let carColX = carX + carWidth * carCollisionPadding / 2;
-    let carColY = carY + carHeight * carCollisionPadding / 2;
-    let carColW = carWidth * (1 - carCollisionPadding);
-    let carColH = carHeight * (1 - carCollisionPadding);
-
-    if (
-        porX < carColX + carColW &&
-        porX + 200 > carColX &&
-        porY + 100 > carColY &&
-        porY < carColY + carColH
-    ) {
-        gameOver = true;
-        stopAllSounds();
-        music.pause();
-        loseSound.currentTime = 0;
-        loseSound.play();
-    }
+if (
+    porX < carColX + carColW &&
+    porX + 200 > carColX &&
+    porY + 100 > carColY &&
+    porY < carColY + carColH
+) {
+    gameOver = true;
+    stopAllSounds();
+    music.pause();
+    loseSound.currentTime = 0;
+    loseSound.play();
+}
 
     // Самолёты: появление (реже)
     planeTimer++;
